@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:src="@{/css/app.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:if="${not #lists.isEmpty(users)}">
+    <table>
+        <thead></thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.firstName}">John</td>
+            <td th:text="${user.lastName}">Smith</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

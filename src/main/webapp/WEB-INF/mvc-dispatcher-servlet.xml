@@ -1,0 +1,61 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <!--<bean name="/welcome.htm"-->
+    <!--class="org.ogin.controller.HelloWorldController" />-->
+
+    <context:component-scan base-package="org.ogin" />
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!-- Turn off working out content type based on URL file extension, should fall back to looking at the Accept headers -->
+        <property name="favorPathExtension" value="false" />
+    </bean>
+
+    <!--<bean id="viewResolver"-->
+          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver" >-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/jsp/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.jsp</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <beans:bean id="messageSource"
+                class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="basename" value="classpath:messages" />
+        <beans:property name="defaultEncoding" value="UTF-8" />
+    </beans:bean>
+
+    <bean id="customers2Validator" class="org.ogin.validator.Customers2Validator"/>
+    <bean id="customerValidator" class="org.ogin.validator.CustomerValidator" />
+    <bean id="supplierValidator" class="org.ogin.validator.SupplierValidator" />
+    <!--<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/view/" />-->
+        <!--<property name="suffix" value=".html" />-->
+        <!--<property name="templateMode" value="HTML5" />-->
+        <!--<property name="cacheable" value="false" />-->
+    <!--</bean>-->
+    <!--<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">-->
+        <!--<property name="templateResolver" ref="templateResolver" />-->
+    <!--</bean>-->
+    <!--<bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">-->
+        <!--<property name="templateEngine" ref="templateEngine" />-->
+        <!--<property name="order" value="1" />-->
+        <!--&lt;!&ndash;<property name="viewNames" value="thymeleaf/*" />&ndash;&gt;-->
+    <!--</bean>-->
+</beans>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="defaultTemplate" template="/WEB-INF/tiles/template.jsp">
+        <put-attribute name="title" value="Tiles tutorial homepage" />
+        <put-attribute name="nav" value="/WEB-INF/tiles/nav.jsp"/>
+        <!--<put-attribute name="header" value="/WEB-INF/template/defaultHeader.jsp" />-->
+        <!--<put-attribute name="navigation_bar" value="/WEB-INF/jsp/navigation_bar/default_navigation_bar.jsp" />-->
+        <!--<put-attribute name="content" value="/WEB-INF/template/defaultContent.jsp"/>-->
+        <!--<put-attribute name="footer" value="/WEB-INF/template/defaultFooter.jsp" />-->
+    </definition>
+    <definition name="defaultList" template="/WEB-INF/tiles/list.jsp">
+        <put-attribute name="title" value="Tiles tutorial homepage" />
+        <put-attribute name="nav" value="/WEB-INF/tiles/nav.jsp"/>
+
+    </definition>
+
+    <definition name="customer" extends="defaultTemplate">
+        <put-attribute name="title" value="Customers Form" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customer.jsp" />
+    </definition>
+
+    <definition name="supplier" extends="defaultTemplate">
+        <put-attribute name="title" value="Supplier Form" />
+        <put-attribute name="body" value="/WEB-INF/jsp/supplier.jsp" />
+    </definition>
+
+    <definition name="inventoryItem" extends="defaultList">
+        <put-attribute name="title" value="InventoryItem Form" />
+        <put-attribute name="body" value="/WEB-INF/jsp/inventoryItem.jsp" />
+        <put-attribute name="scriptFile" value="/js/inventoryItem.js" cascade="true"></put-attribute>
+    </definition>
+
+    <definition name="inventoryItemDetail" extends="defaultList">
+        <put-attribute name="title" value="InventoryItem Form" />
+        <put-attribute name="body" value="/WEB-INF/jsp/inventoryItemDetail.jsp" />
+
+    </definition>
+
+    <definition name="customerList" extends="defaultList">
+        <put-attribute name="scriptFile" value="/js/customerList.js" cascade="true"></put-attribute>
+        <put-attribute name="title" value="List Of Customer" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customerList.jsp" />
+    </definition>
+
+    <definition name="supplierList" extends="defaultList">
+        <put-attribute name="scriptFile" value="/js/supplierList.js" cascade="true"></put-attribute>
+        <put-attribute name="title" value="List Of Supplier" />
+        <put-attribute name="body" value="/WEB-INF/jsp/supplierList.jsp" />
+    </definition>
+
+
+
+</tiles-definitions>
